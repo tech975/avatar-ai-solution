@@ -52,51 +52,28 @@
         .announcement-bar.hidden-bar { transform: translateY(-100%); height: 0; padding: 0; overflow: hidden; }
 
         /* Navbar */
-        .navbar {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: transform, border-radius, box-shadow, width, margin;
+        #nav-wrapper { 
+            transition: all .35s ease; 
         }
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(24px);
-            border-radius: 50px;
-            max-width: 900px;
-            margin: 16px auto 0;
-            box-shadow: 0 8px 32px rgba(44, 62, 90, 0.15), 0 0 1px rgba(44, 62, 90, 0.1);
-            padding: 8px 28px;
-            position: fixed;
-            left: 50%;
-            transform: translateX(-50%) translateY(0);
-            top: 0;
-            width: 92%;
-            z-index: 1000;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        #nav-wrapper.scrolled {
+            top: 14px;
+            max-width: 1100px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(30,58,95,0.08);
+            border-radius: 9999px;
+            box-shadow: 0 10px 30px -10px rgba(15,31,52,0.15);
+            padding-left: 22px; 
+            padding-right: 8px;
         }
-        .navbar:not(.scrolled) {
-            background: rgba(255,255,255,0.98);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border-radius: 0;
-            margin: 0;
-            padding: 12px 24px;
-            transform: translateX(0) translateY(0);
-        }
-        .navbar.has-announcement:not(.scrolled) {
-            top: 40px;
-        }
-        
-        /* Smooth pill animation on scroll */
-        @media (max-width: 768px) {
-            .navbar.scrolled {
-                width: 95%;
-                max-width: 100%;
-                margin: 12px auto 0;
-                padding: 6px 20px;
+        /* Mobile: enable pill shape when scrolled */
+        @media (max-width: 767px) {
+            #nav-wrapper.scrolled {
+                top: 14px;
+                max-width: calc(100% - 32px);
+                border-radius: 9999px;
+                padding-left: 16px;
+                padding-right: 16px;
             }
         }
 
@@ -325,10 +302,7 @@
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-logo">
-            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                <polygon points="30,5 55,50 5,50" fill="none" stroke="#8A9BB5" stroke-width="2"/>
-                <polygon points="30,18 45,50 15,50" fill="#4A6FA5" opacity="0.6"/>
-            </svg>
+            <img src="Aavtat logo.svg" alt="Avatar logo" class="logo-mark" style="width: 1000px; height: 50px;">
         </div>
     </div>
 
@@ -344,49 +318,44 @@
                 <a href="#marketplace" class="underline text-white hover:text-avatar-light ml-1 transition-colors">Explore now →</a>
             </p>
         </div>
-        <button onclick="closeAnnouncement()" class="absolute right-4 top-1/2 -translate-y-1/2 text-avatar-steel hover:text-white transition-colors" aria-label="Close">
-            <i class="fas fa-times text-sm"></i>
-        </button>
+        
     </div>
 
     <!-- 2. NAVBAR -->
-    <nav class="navbar py-3 px-6 lg:px-8 has-announcement" id="navbar">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-2.5 shrink-0">
-                <svg width="36" height="36" viewBox="0 0 60 60" fill="none" class="w-9 h-9">
-                    <polygon points="30,4 56,52 4,52" fill="none" stroke="#8A9BB5" stroke-width="2.5"/>
-                    <polygon points="30,17 46,52 14,52" fill="#2C3E5A" opacity="0.8"/>
-                    <polygon points="30,28 40,52 20,52" fill="#4A6FA5" opacity="0.7"/>
-                </svg>
-                <span class="font-display font-bold text-xl tracking-wide text-avatar-dark">AVATAR</span>
+    <!-- 2. NAVBAR -->
+    <header class="sticky top-5 z-50 w-full">
+        <div id="nav-wrapper" class="mx-auto px-4 sm:px-6 py-3 flex items-center justify-between bg-white border-b border-navy-100 max-w-full">
+            <a href="#" class="flex items-center gap-2.5 no-select">
+                <img src="Aavtat logo.svg" alt="Avatar logo" class="logo-mark" style="width: 120px; height: 34px;">
             </a>
-
-            <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center gap-7">
-                <a href="#divisions" class="nav-link text-sm font-medium text-avatar-slate hover:text-avatar-dark transition-colors">Solutions</a>
-                <a href="#learning" class="nav-link text-sm font-medium text-avatar-slate hover:text-avatar-dark transition-colors">Learning</a>
-                <a href="#marketplace" class="nav-link text-sm font-medium text-avatar-slate hover:text-avatar-dark transition-colors">Marketplace</a>
-                <a href="#enterprise" class="nav-link text-sm font-medium text-avatar-slate hover:text-avatar-dark transition-colors">Enterprise</a>
-                <a href="#about" class="nav-link text-sm font-medium text-avatar-slate hover:text-avatar-dark transition-colors">About</a>
+            
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-navy-700">
+                <a href="#divisions" class="hover:text-navy-900 transition">Solutions</a>
+                <a href="#learning" class="hover:text-navy-900 transition">Learning</a>
+                <a href="#marketplace" class="hover:text-navy-900 transition">Marketplace</a>
+                <a href="#enterprise" class="hover:text-navy-900 transition">Enterprise</a>
+                <a href="#about" class="hover:text-navy-900 transition">About</a>
+            </nav>
+            
+            <div class="flex items-center gap-3">
+                <a href="#enroll" class="hidden md:inline-flex items-center gap-2 bg-avatar-navy hover:bg-avatar-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition">
+                    Consult Now
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                
+                <!-- Hamburger button (mobile) -->
+                <button id="hamburger-btn" class="hamburger md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] z-[60]" aria-label="Toggle menu">
+                    <span class="hamburger-line block w-6 h-[2px] bg-avatar-dark rounded-full origin-center"></span>
+                    <span class="hamburger-line block w-6 h-[2px] bg-avatar-dark rounded-full origin-center"></span>
+                    <span class="hamburger-line block w-6 h-[2px] bg-avatar-dark rounded-full origin-center"></span>
+                </button>
             </div>
-
-            <!-- Desktop CTA -->
-            <div class="hidden lg:flex items-center gap-3">
-                <a href="#" class="text-sm font-medium text-avatar-slate hover:text-avatar-dark transition-colors px-4 py-2">Sign In</a>
-                <a href="#cta" class="text-sm font-semibold bg-avatar-dark text-white px-5 py-2.5 rounded-full hover:bg-avatar-navy transition-colors">Get Started</a>
-            </div>
-
-            <!-- Mobile Hamburger -->
-            <button class="lg:hidden p-2 text-avatar-dark" id="hamburgerBtn" aria-label="Menu" onclick="toggleMobileMenu()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <line x1="3" y1="6" x2="21" y2="6" class="ham-line-1"/>
-                    <line x1="3" y1="12" x2="21" y2="12" class="ham-line-2"/>
-                    <line x1="3" y1="18" x2="21" y2="18" class="ham-line-3"/>
-                </svg>
-            </button>
         </div>
-    </nav>
+    </header>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed inset-y-0 right-0 w-80 max-w-full bg-white shadow-2xl z-[10000] p-8" id="mobileMenu">
@@ -1297,42 +1266,15 @@
             document.getElementById('scrollProgress').style.width = scrollPercent + '%';
         });
 
-        // Announcement Bar
-        function closeAnnouncement() {
-            const bar = document.getElementById('announcementBar');
-            bar.classList.add('hidden-bar');
-            document.getElementById('navbar').classList.remove('has-announcement');
-        }
 
         // Navbar Scroll Behavior with Smooth Pill Animation
         let lastScrollY = 0;
-        let scrollTimeout;
-        const scrollThreshold = 80;
-        
+        // Navbar scroll effect
+        const navWrapper = document.getElementById('nav-wrapper');
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            const scrollY = window.scrollY;
-            
-            // Clear previous timeout
-            clearTimeout(scrollTimeout);
-            
-            if (scrollY > scrollThreshold) {
-                // Smooth transition to pill shape
-                if (!navbar.classList.contains('scrolled')) {
-                    navbar.classList.add('scrolled');
-                    navbar.classList.remove('has-announcement');
-                }
-            } else {
-                // Smooth transition back to full width
-                if (navbar.classList.contains('scrolled')) {
-                    navbar.classList.remove('scrolled');
-                    if (!document.getElementById('announcementBar').classList.contains('hidden-bar')) {
-                        navbar.classList.add('has-announcement');
-                    }
-                }
-            }
-            lastScrollY = scrollY;
-        }, { passive: true });
+            if (window.scrollY > 30) navWrapper.classList.add('scrolled');
+            else navWrapper.classList.remove('scrolled');
+        });
 
         // Mobile Menu
         function toggleMobileMenu() {
@@ -1472,6 +1414,9 @@
                 answer.classList.add('open');
             }
         }
+
+        // Hamburger button event listener
+        document.getElementById('hamburger-btn').addEventListener('click', toggleMobileMenu);
 
         // Video Play (placeholder)
         function playVideo(el) {
