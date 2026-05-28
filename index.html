@@ -295,6 +295,31 @@
             z-index: 10001;
             transition: width 0.1s linear;
         }
+
+        /* Registration Form Styles */
+        .registration-step {
+            animation: fadeInStep 0.4s ease;
+        }
+        @keyframes fadeInStep {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .step-indicator {
+            background: #E8ECF2;
+            color: #8A9BB5;
+        }
+        .step-indicator.active {
+            background: #2C3E5A;
+            color: white;
+        }
+        .step-indicator.completed {
+            background: #10b981;
+            color: white;
+        }
+        .user-type-option:has(input:checked) {
+            border-color: #4A6FA5;
+            background: rgba(74, 111, 165, 0.05);
+        }
     </style>
 </head>
 <body class="bg-white text-avatar-dark antialiased">
@@ -433,6 +458,177 @@
             <button class="slide-dot" data-target="1" onclick="goToSlide(1)"></button>
             <button class="slide-dot" data-target="2" onclick="goToSlide(2)"></button>
             <button class="slide-dot" data-target="3" onclick="goToSlide(3)"></button>
+        </div>
+    </section>
+
+    <!-- REGISTRATION FORM SECTION -->
+    <section class="py-20 lg:py-28 bg-avatar-ice" id="register">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Text Content -->
+                <div class="fade-left">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-avatar-accent mb-4 inline-block">Join Avatar</span>
+                    <h2 class="font-display text-3xl lg:text-4xl font-bold text-avatar-dark mb-5 leading-tight">
+                        Start Your AI Journey Today 
+                    </h2>
+                    <p class="text-avatar-slate leading-relaxed mb-6">
+                        Whether you're a freelancer, individual, or business owner — Avatar has the perfect AI solutions for you. Register now to unlock access to our complete ecosystem.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-sm text-avatar-slate">
+                            <span class="w-5 h-5 bg-avatar-accent/10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-avatar-accent text-[10px]"></i>
+                            </span>
+                            Access to AI learning resources & certifications
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-avatar-slate">
+                            <span class="w-5 h-5 bg-avatar-accent/10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-avatar-accent text-[10px]"></i>
+                            </span>
+                            Deploy AI agents from our marketplace
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-avatar-slate">
+                            <span class="w-5 h-5 bg-avatar-accent/10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-avatar-accent text-[10px]"></i>
+                            </span>
+                            Connect with AI talent & opportunities
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-avatar-slate">
+                            <span class="w-5 h-5 bg-avatar-accent/10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-avatar-accent text-[10px]"></i>
+                            </span>
+                            Free tier available with no credit card required
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Registration Form Box -->
+                <div class="fade-right">
+                    <div class="bg-white rounded-2xl shadow-xl border border-avatar-light/60 p-8">
+                        <!-- Progress Indicator -->
+                        <div class="flex items-center justify-center mb-8">
+                            <div class="flex items-center gap-2">
+                                <div class="step-indicator w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all" id="step1-indicator">1</div>
+                                <div class="w-12 h-0.5 bg-avatar-light transition-all" id="progress1"></div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="step-indicator w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all" id="step2-indicator">2</div>
+                                <div class="w-12 h-0.5 bg-avatar-light transition-all" id="progress2"></div>
+                            </div>
+                            <div class="step-indicator w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all" id="step3-indicator">3</div>
+                        </div>
+
+                        <!-- Step 1: User Type Selection -->
+                        <div id="step1" class="registration-step">
+                            <h3 class="font-display text-xl font-bold text-avatar-dark mb-2">Tell us about yourself</h3>
+                            <p class="text-sm text-avatar-steel mb-6">Are you one of these?</p>
+                            
+                            <div class="space-y-3">
+                                <label class="user-type-option flex items-center gap-4 p-4 border-2 border-avatar-light rounded-xl cursor-pointer transition-all hover:border-avatar-accent hover:bg-avatar-ice/30">
+                                    <input type="radio" name="userType" value="freelancer" class="w-5 h-5 text-avatar-accent">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <i class="fas fa-laptop-code text-avatar-accent"></i>
+                                            <span class="font-semibold text-avatar-dark">Freelancer</span>
+                                        </div>
+                                        <p class="text-xs text-avatar-steel">Offer AI services and grow your freelance business</p>
+                                    </div>
+                                </label>
+
+                                <label class="user-type-option flex items-center gap-4 p-4 border-2 border-avatar-light rounded-xl cursor-pointer transition-all hover:border-avatar-accent hover:bg-avatar-ice/30">
+                                    <input type="radio" name="userType" value="individual" class="w-5 h-5 text-avatar-accent">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <i class="fas fa-user text-avatar-accent"></i>
+                                            <span class="font-semibold text-avatar-dark">Individual</span>
+                                        </div>
+                                        <p class="text-xs text-avatar-steel">Learn AI skills and boost your career</p>
+                                    </div>
+                                </label>
+
+                                <label class="user-type-option flex items-center gap-4 p-4 border-2 border-avatar-light rounded-xl cursor-pointer transition-all hover:border-avatar-accent hover:bg-avatar-ice/30">
+                                    <input type="radio" name="userType" value="business" class="w-5 h-5 text-avatar-accent">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <i class="fas fa-briefcase text-avatar-accent"></i>
+                                            <span class="font-semibold text-avatar-dark">Business Owner</span>
+                                        </div>
+                                        <p class="text-xs text-avatar-steel">Transform your business with AI solutions</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <button onclick="goToStep2()" class="w-full mt-6 bg-avatar-dark text-white font-semibold px-6 py-3 rounded-full hover:bg-avatar-navy transition-colors text-sm">
+                                Continue
+                            </button>
+                        </div>
+
+                        <!-- Step 2: User Details Form -->
+                        <div id="step2" class="registration-step hidden">
+                            <h3 class="font-display text-xl font-bold text-avatar-dark mb-2">Your details</h3>
+                            <p class="text-sm text-avatar-steel mb-6">We'll use this to set up your account</p>
+                            
+                            <form id="registrationForm" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-avatar-dark mb-2">Full Name</label>
+                                    <input type="text" id="fullName" required class="w-full px-4 py-2.5 border border-avatar-light rounded-lg focus:outline-none focus:ring-2 focus:ring-avatar-accent focus:border-transparent text-sm" placeholder="John Doe">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-avatar-dark mb-2">Email Address</label>
+                                    <input type="email" id="email" required class="w-full px-4 py-2.5 border border-avatar-light rounded-lg focus:outline-none focus:ring-2 focus:ring-avatar-accent focus:border-transparent text-sm" placeholder="john@example.com">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-avatar-dark mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" required class="w-full px-4 py-2.5 border border-avatar-light rounded-lg focus:outline-none focus:ring-2 focus:ring-avatar-accent focus:border-transparent text-sm" placeholder="+1 (555) 000-0000">
+                                </div>
+
+                                <div class="flex gap-3 pt-2">
+                                    <button type="button" onclick="goToStep1()" class="flex-1 border border-avatar-light text-avatar-dark font-medium px-6 py-3 rounded-full hover:bg-avatar-ice transition-colors text-sm">
+                                        Back
+                                    </button>
+                                    <button type="submit" class="flex-1 bg-avatar-dark text-white font-semibold px-6 py-3 rounded-full hover:bg-avatar-navy transition-colors text-sm">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Step 3: Thank You Message -->
+                        <div id="step3" class="registration-step hidden text-center">
+                            <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-check text-emerald-600 text-2xl"></i>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-avatar-dark mb-2">Thank You for Registering!</h3>
+                            <p class="text-sm text-avatar-steel mb-6">
+                                Welcome to the Avatar ecosystem. We've sent a confirmation email to <span id="confirmedEmail" class="font-semibold text-avatar-dark"></span>
+                            </p>
+                            <div class="bg-avatar-ice rounded-xl p-4 mb-6">
+                                <p class="text-xs text-avatar-slate mb-3">What's next?</p>
+                                <ul class="space-y-2 text-left">
+                                    <li class="flex items-start gap-2 text-xs text-avatar-slate">
+                                        <i class="fas fa-circle text-[4px] mt-1.5 text-avatar-accent"></i>
+                                        <span>Check your email for account activation link</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-xs text-avatar-slate">
+                                        <i class="fas fa-circle text-[4px] mt-1.5 text-avatar-accent"></i>
+                                        <span>Complete your profile to unlock all features</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 text-xs text-avatar-slate">
+                                        <i class="fas fa-circle text-[4px] mt-1.5 text-avatar-accent"></i>
+                                        <span>Explore our AI learning resources and marketplace</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#divisions" class="inline-flex items-center justify-center gap-2 bg-avatar-dark text-white font-semibold px-8 py-3 rounded-full hover:bg-avatar-navy transition-colors text-sm">
+                                Explore Ecosystem
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -742,6 +938,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- 7. Z-SHAPED IMAGE + TEXT — Enterprise & Segments -->
     <section class="py-20 lg:py-28 bg-white" id="enterprise">
@@ -1165,14 +1363,9 @@
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
                 <!-- Brand -->
                 <div class="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
-                    <a href="#" class="flex items-center gap-2.5 mb-4">
-                        <svg width="32" height="32" viewBox="0 0 60 60" fill="none">
-                            <polygon points="30,4 56,52 4,52" fill="none" stroke="#8A9BB5" stroke-width="2.5"/>
-                            <polygon points="30,17 46,52 14,52" fill="#4A6FA5" opacity="0.6"/>
-                            <polygon points="30,28 40,52 20,52" fill="#8A9BB5" opacity="0.5"/>
-                        </svg>
-                        <span class="font-display font-bold text-lg text-white tracking-wide">AVATAR</span>
-                    </a>
+                    <div class="pb-8">
+                        <img src="Aavtat logo.svg" alt="Avatar logo" class="logo-mark" style="width: 700px; height: 50px;">
+                    </div>
                     <p class="text-sm text-avatar-steel leading-relaxed mb-5">
                         The Operating System for the AI Era. Education, solutions, infrastructure — all in one ecosystem.
                     </p>
@@ -1413,6 +1606,86 @@
                 answer.classList.add('open');
             }
         }
+
+        // Registration Form - Step Navigation
+        let selectedUserType = '';
+
+        function updateStepIndicators(currentStep) {
+            // Reset all indicators
+            document.querySelectorAll('.step-indicator').forEach(indicator => {
+                indicator.classList.remove('active', 'completed');
+            });
+            document.querySelectorAll('[id^="progress"]').forEach(progress => {
+                progress.classList.remove('bg-avatar-accent');
+            });
+
+            // Update based on current step
+            if (currentStep >= 1) {
+                document.getElementById('step1-indicator').classList.add('completed');
+            }
+            if (currentStep >= 2) {
+                document.getElementById('step1-indicator').classList.add('completed');
+                document.getElementById('progress1').classList.add('bg-avatar-accent');
+                document.getElementById('step2-indicator').classList.add('active');
+            }
+            if (currentStep >= 3) {
+                document.getElementById('step2-indicator').classList.add('completed');
+                document.getElementById('progress2').classList.add('bg-avatar-accent');
+                document.getElementById('step3-indicator').classList.add('completed');
+            }
+            if (currentStep === 1) {
+                document.getElementById('step1-indicator').classList.add('active');
+            }
+        }
+
+        function goToStep1() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step1').classList.remove('hidden');
+            updateStepIndicators(1);
+        }
+
+        function goToStep2() {
+            const userTypeRadio = document.querySelector('input[name="userType"]:checked');
+            if (!userTypeRadio) {
+                alert('Please select an option to continue');
+                return;
+            }
+            selectedUserType = userTypeRadio.value;
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+            updateStepIndicators(2);
+        }
+
+        function goToStep3() {
+            const email = document.getElementById('email').value;
+            document.getElementById('confirmedEmail').textContent = email;
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+            updateStepIndicators(3);
+        }
+
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            // Here you would typically send data to your backend
+            console.log('Registration Data:', {
+                userType: selectedUserType,
+                fullName: fullName,
+                email: email,
+                phone: phone
+            });
+
+            // Move to thank you step
+            goToStep3();
+        });
+
+        // Initialize step indicators
+        updateStepIndicators(1);
 
         // Hamburger button event listener
         document.getElementById('hamburger-btn').addEventListener('click', toggleMobileMenu);
